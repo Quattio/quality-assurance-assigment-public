@@ -12,6 +12,7 @@ services:
       - db_data:/var/lib/mysql
     expose:
       - "3306"
+    restart: on-failure
 
   migrate:
     image: gabrielquatt/quatt-quality-assurance-assignemnt-app:latest
