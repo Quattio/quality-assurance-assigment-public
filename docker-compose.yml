@@ -1,22 +1,4 @@
 services:
-  migrate:
-    image: gabrielquatt/quatt-quality-assurance-assignemnt-app:latest
-    command: ["npx", "prisma", "migrate", "deploy"]
-    environment:
-      DATABASE_URL: mysql://quatt:quatt@db:3306/quality-assurance-assigment
-    depends_on:
-      - db
-
-  app:
-    image: gabrielquatt/quatt-quality-assurance-assignemnt-app:latest
-    ports:
-      - '3000:3000'
-    environment:
-      DATABASE_URL: mysql://quatt:quatt@db:3306/quality-assurance-assigment
-    depends_on:
-      - db
-      - migrate
-
   db:
     image: mysql:8.0
     environment:
@@ -30,6 +12,24 @@ services:
       - db_data:/var/lib/mysql
     expose:
       - "3306"
+
+  migrate:
+    image: gabrielquatt/quatt-quality-assurance-assignemnt-app:latest
+    command: ["npx", "prisma", "migrate", "deploy"]
+    environment:
+      DATABASE_URL: mysql://root:quatt@db:3306/quality-assurance-assigment
+    depends_on:
+      - db
+  
+  app:
+    image: gabrielquatt/quatt-quality-assurance-assignemnt-app:latest
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: mysql://quatt:quatt@db:3306/quality-assurance-assigment
+    depends_on:
+      - db
+      - migrate
 
 volumes:
   db_data:

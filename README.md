@@ -2,7 +2,12 @@
 
 A developer has quickly built some features that were needed for our backend application, it has gone through the development lifecycle and it is now your turn to make sure that it adheres to our quality standards. Run the application and test it as you normally would, create a github repository with your findings and invite [dboris](https://github.com/diboris) and [GabrielKidane96](https://github.com/GabrielKidane96).
 
+# Installation
+
+Run `docker-compose up` the application should now be running on port `3000`
+
 # Documentation
+
 The openapi documentation is hosted on `/docs`
 
 # User Stories
