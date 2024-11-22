@@ -12,11 +12,11 @@ services:
       - db_data:/var/lib/mysql
     expose:
       - "3306"
-    restart: on-failure
 
   migrate:
     image: gabrielquatt/quatt-quality-assurance-assignemnt-app:latest
     command: ["npx", "prisma", "migrate", "deploy"]
+    restart: on-failure
     environment:
       DATABASE_URL: mysql://root:quatt@db:3306/quality-assurance-assigment
     depends_on:
